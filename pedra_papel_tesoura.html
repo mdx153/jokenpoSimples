@@ -1,0 +1,99 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width , initial-scale=1.0">
+	<style type="text/css">
+		
+		body{background-image: url("wallpaper/jokenpo.png");
+		     background-repeat: no-repeat;
+		     
+		     background-position: center;
+		     background-repeat: no-repeat;
+		     background-size: cover;
+			 position: absolute;
+			 left: 50%;
+			 top:50%;
+			 margin-left: -110px;
+			 margin-top: -40px;}
+
+	</style>
+<script type="text/javascript">
+var NUM_OPCOES = 3
+var op0 = "tesoura"
+var op1 = "papel"
+var op2 = "pedra"	
+
+function nome_numero(nome){
+
+	if(nome==op0)
+		return 0
+	else if(nome==op1)
+		return 1
+	else if(nome==op2)
+		return 2
+	else
+		return false
+}
+
+function numero_nome(numero){
+
+	if(numero==0)
+		return op0
+	else if(numero==1)
+		return op1
+	else if(numero==2)
+		return op2
+	else
+		return false
+}
+
+function imprimir(escolhaJ,escolhaPC){
+
+	alert("O Jogador escolheu: " + escolhaJ + "\n" +"O Computador escolheu: " + escolhaPC)
+
+}
+
+function teste(){
+	var x = Math.floor(Math.random() * 3)
+	alert(x)
+}
+
+function ppt(opcao){
+	var x = document.getElementById('player1').value
+	if(x ==""){
+		alert("Invalido!!")
+
+	}else{
+	opcao=x
+	var num_jogador = nome_numero(opcao)
+	var num_computador = Math.floor(Math.random() * NUM_OPCOES)
+	var diferenca = (num_jogador - num_computador) % NUM_OPCOES
+
+	imprimir(opcao,numero_nome(num_computador))
+
+	if(diferenca==0)
+		alert("Empate")
+	else if(diferenca==2 || diferenca== -1)
+		alert("Ganho")
+	else{
+		alert("perdeu")
+	}
+	}
+}
+
+</script>
+
+</head>
+
+
+<body>
+<center>
+<input type = "text" id="player1" placeholder="Pedra , Papel ou Tesoura" >
+<br><br><br>
+<input type = "button" id="comeca" value="Jogar" onclick="ppt()">
+<input type = "button" id="teste" value="Testar" onclick="teste()">
+</center>
+
+</body>
+
+</html>
